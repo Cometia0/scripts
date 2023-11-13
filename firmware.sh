@@ -769,20 +769,20 @@ USB/SD devices are connected. "
 	usb_device="${usb_devs[${usb_dev_index}-1]}"
 	mkdir /tmp/usb > /dev/null 2>&1
 	echo {$usb_device}
-	if ! sudo mount "${usb_device}" /tmp/usb > /dev/null 2>&1; then
-		if ! sudo mount "${usb_device}1" /tmp/usb > /dev/null 2>&1; then
-			backup_fail "USB backup device failed to mount; cannot proceed."
-			return 1
-		fi
-	fi
-	backupname="stock-firmware-${boardName}-$(date +%Y%m%d).rom"
-	echo_yellow "\nSaving firmware backup as ${backupname}"
-	if ! cp /tmp/bios.bin /tmp/usb/${backupname}; then
-		backup_fail "Failure copying stock firmware to USB; cannot proceed."
-		return 1
-	fi
-	sync
-	umount /tmp/usb > /dev/null 2>&1
+	#if ! sudo mount "${usb_device}" /tmp/usb > /dev/null 2>&1; then
+	#	if ! sudo mount "${usb_device}1" /tmp/usb > /dev/null 2>&1; then
+	#		backup_fail "USB backup device failed to mount; cannot proceed."
+	#		return 1
+	#	fi
+	#fi
+	#backupname="stock-firmware-${boardName}-$(date +%Y%m%d).rom"
+	#echo_yellow "\nSaving firmware backup as ${backupname}"
+	#if ! cp /tmp/bios.bin /tmp/usb/${backupname}; then
+	#	backup_fail "Failure copying stock firmware to USB; cannot proceed."
+	#	return 1
+	# fi
+	# sync
+	# umount /tmp/usb > /dev/null 2>&1
 	rmdir /tmp/usb
 	echo_green "Firmware backup complete. Remove the USB stick and press [Enter] to continue."
 	read -rep ""
