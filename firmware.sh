@@ -572,9 +572,9 @@ Connect the USB/SD device which contains the backed-up stock firmware and press 
 		done
 		usb_device="${usb_devs[${usb_dev_index}-1]}"
 		mkdir /tmp/usb > /dev/null 2>&1
-		mount "${usb_device}" /tmp/usb > /dev/null 2>&1
+		sudo mount "${usb_device}" /tmp/usb > /dev/null 2>&1
 		if [ $? -ne 0 ]; then
-			mount "${usb_device}1" /tmp/usb
+			sudo mount "${usb_device}1" /tmp/usb
 		fi
 		if [ $? -ne 0 ]; then
 			echo_red "USB device failed to mount; cannot proceed."
@@ -768,8 +768,8 @@ USB/SD devices are connected. "
 
 	usb_device="${usb_devs[${usb_dev_index}-1]}"
 	mkdir /tmp/usb > /dev/null 2>&1
-	if ! mount "${usb_device}" /tmp/usb > /dev/null 2>&1; then
-		if ! mount "${usb_device}1" /tmp/usb > /dev/null 2>&1; then
+	if ! sudo mount "${usb_device}" /tmp/usb > /dev/null 2>&1; then
+		if ! sudo mount "${usb_device}1" /tmp/usb > /dev/null 2>&1; then
 			backup_fail "USB backup device failed to mount; cannot proceed."
 			return 1
 		fi

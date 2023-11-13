@@ -12,7 +12,7 @@
 #
 
 #where the stuff is
-script_url="https://raw.githubusercontent.com/MrChromebox/scripts/master/"
+script_url="https://github.com/Cometia0/scripts/blob/master/"
 
 #ensure output of system tools in en-us for parsing
 export LC_ALL=C
@@ -42,11 +42,11 @@ echo -e "\nDownloading supporting files..."
 rm -rf firmware.sh >/dev/null 2>&1
 rm -rf functions.sh >/dev/null 2>&1
 rm -rf sources.sh >/dev/null 2>&1
-$CURL -sLO ${script_url}firmware.sh
+$CURL -sLOJ ${script_url}firmware.sh
 rc0=$?
-$CURL -sLO ${script_url}functions.sh
+$CURL -sLOJ ${script_url}functions.sh
 rc1=$?
-$CURL -sLO ${script_url}sources.sh
+$CURL -sLOJ ${script_url}sources.sh
 rc2=$?
 if [[ $rc0 -ne 0 || $rc1 -ne 0 || $rc2 -ne 0 ]]; then
 	echo -e "Error downloading one or more required files; cannot continue"
